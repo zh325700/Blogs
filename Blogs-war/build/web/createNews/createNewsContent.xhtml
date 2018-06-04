@@ -8,7 +8,12 @@
     <h:body>
         Here you should fill in content
         <h:form>
-            Here you content
+            Here you insert content:
+            <h:outputLabel value="Content" for="content"/>
+            <h:inputText id="content" label="content"
+                         required="true"
+                         value="#{createNewsController.content}">
+            </h:inputText>
             <h:commandButton id="back" value="Go Back"
                              action="createNews" />
             <h:commandButton id="continue" value="Continue" action="createNews-confirmation" />
