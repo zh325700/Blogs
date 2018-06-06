@@ -22,10 +22,10 @@ import javax.inject.Named;
 import model.NewsEntityFacade;
 import query.DataQuery;
 
-@ManagedBean
+//@ManagedBean
 @Named
 @FlowScoped("createNews")
-@SessionScoped
+//@SessionScoped
 public class CreateNewsController implements Serializable {
 
     @EJB
