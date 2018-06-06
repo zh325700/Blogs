@@ -2,17 +2,6 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group>
-            <file>file:/C:/Users/zhanghan/Desktop/javaee1/javaee/Blogs/Blogs-war/src/java/controller/CreateNewsController.java</file>
-            <file>file:/C:/Users/zhanghan/Desktop/javaee1/javaee/Blogs/Blogs-war/src/java/ejb/SessionManagerBean.java</file>
-            <file>file:/C:/Users/zhanghan/Desktop/javaee1/javaee/Blogs/Blogs-war/web/login.xhtml</file>
-            <file>file:/C:/Users/zhanghan/Desktop/javaee1/javaee/Blogs/Blogs-war/web/createNews-return.xhtml</file>
-            <file>file:/C:/Users/zhanghan/Desktop/javaee1/javaee/Blogs/Blogs-war/web/addNews.xhtml</file>
-            <file>file:/C:/Users/zhanghan/Desktop/javaee1/javaee/Blogs/Blogs-war/web/index.html</file>
-            <file>file:/C:/Users/zhanghan/Desktop/javaee1/javaee/Blogs/Blogs-war/src/java/controller/LoginController.java</file>
-            <file>file:/C:/Users/zhanghan/Desktop/javaee1/javaee/Blogs/Blogs-war/web/listOnlyMyNews.xhtml</file>
-            <file>file:/C:/Users/zhanghan/Desktop/javaee1/javaee/Blogs/Blogs-war/web/home.xhtml</file>
-            <file>file:/C:/Users/zhanghan/Desktop/javaee1/javaee/Blogs/Blogs-war/src/java/controller/NewsController.java</file>
-        </group>
+        <group/>
     </open-files>
 </project-private>
