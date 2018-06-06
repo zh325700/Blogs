@@ -15,12 +15,16 @@
                     <h:inputText id="title" value="#{newsController.news.title}" title="Title" required="true" requiredMessage="The Title field is required."/>
                     <h:outputLabel value="Body:" for="body" />
                     <h:inputText id="body" value="#{newsController.news.body}" title="Body" required="true" requiredMessage="The Body field is required."/>
+                    <h:outputLabel value="Categories:" for="categories" />
+                    <h:selectOneMenu value="#{newsController.choosenCat}">
+                        <f:selectItems value="#{newsController.categories}" />
+                    </h:selectOneMenu>
                     <h:commandButton value="save" action="#{newsController.add()}"></h:commandButton>
                 </h:panelGrid>
             </h:form>
         </f:view>
         <br></br>
-       <h:link value="Go to Draft" outcome="createDraft"></h:link>
+        <h:link value="Go to Draft" outcome="createDraft"></h:link>
 
     </h:body>
 </html>

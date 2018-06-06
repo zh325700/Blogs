@@ -38,6 +38,34 @@ public class CreateNewsController implements Serializable {
     private LoginDao aUser;
     private DataQuery query = new DataQuery();
 
+    private NewsEntity.Categories choosenCat;
+
+    private NewsEntity.Categories[] categories = NewsEntity.Categories.values();
+
+    public DataQuery getQuery() {
+        return query;
+    }
+
+    public void setQuery(DataQuery query) {
+        this.query = query;
+    }
+
+    public NewsEntity.Categories getChoosenCat() {
+        return choosenCat;
+    }
+
+    public void setChoosenCat(NewsEntity.Categories choosenCat) {
+        this.choosenCat = choosenCat;
+    }
+
+    public NewsEntity.Categories[] getCategories() {
+        return categories;
+    }
+
+    public void setCategories(NewsEntity.Categories[] categories) {
+        this.categories = categories;
+    }
+
     public NewsEntityFacade getNewsEntityFacade() {
         return newsEntityFacade;
     }
@@ -58,6 +86,7 @@ public class CreateNewsController implements Serializable {
 //        System.out.println("If I got user when add?" + aUser.getUsername());
         aNews.setBody(content);
         aNews.setTitle(title);
+        aNews.setCategory(choosenCat);
         this.newsEntityFacade.create(this.aNews);
         return "createNews-return";
     }

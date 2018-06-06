@@ -6,15 +6,15 @@
 package ejb;
 
 import java.io.Serializable;
-import java.util.Collection;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
@@ -36,21 +36,36 @@ import javax.xml.bind.annotation.XmlRootElement;
    
     , @NamedQuery(name = "NewsEntity.findByLikes", query = "SELECT n FROM NewsEntity n WHERE n.likes = :likes")})
 public class NewsEntity implements Serializable {
+    
+    
+    public enum Categories {TECH,FUN,LIFE,POLITICS};
 
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
-    @Column(name = "ID")
+    @Column
     private Integer id;
     @Basic(optional = false)
-    @Column(name = "TITLE")
+    @Column
     private String title;
     @Basic(optional = false)
-    @Column(name = "BODY")
+    @Column
     private String body;
-    @Column(name = "LIKES")
+    @Column
     private int likes;
+    @Column
+    @Enumerated(EnumType.STRING)
+    private Categories category;
+
+    public Categories getCategory() {
+        return category;
+    }
+
+    public void setCategory(Categories category) {
+        this.category = category;
+    }
+    
     @JoinColumn(name="USER_ID",                       // name 本地的column name , referencedColumnName : 外来的column name
             referencedColumnName = "ID")
     @ManyToOne

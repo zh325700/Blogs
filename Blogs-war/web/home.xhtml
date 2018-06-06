@@ -12,7 +12,7 @@
             <h:commandLink action="#{newsController.gotonews(login.getUser())}">
                 <h:outputText value="Add News"></h:outputText><br></br>
             </h:commandLink>
-            
+
             <h:link value="List my News" outcome="listOnlyMyNews"></h:link>
             <br></br>
             <h:dataTable var="news" value="#{newsController.findAll()}" border="1" cellpadding="2" cellspacing="2">
@@ -23,6 +23,10 @@
                 <h:column>
                     <f:facet name="header">Title</f:facet>
                     <h:outputText value="#{news.title}"></h:outputText>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Category</f:facet>
+                    <h:outputText value="#{news.category}"></h:outputText>
                 </h:column>
                 <h:column>
                     <f:facet name="header">Body</f:facet>

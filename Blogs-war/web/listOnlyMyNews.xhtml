@@ -19,6 +19,10 @@
                     <h:outputText value="#{news.title}"></h:outputText>
                 </h:column>
                 <h:column>
+                    <f:facet name="header">Category</f:facet>
+                    <h:outputText value="#{news.category}"></h:outputText>
+                </h:column>
+                <h:column>
                     <f:facet name="header">Body</f:facet>
                     <h:outputText value="#{news.body}"></h:outputText>
                 </h:column>
