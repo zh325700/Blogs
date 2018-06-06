@@ -37,7 +37,7 @@ public class NewsController implements Serializable {
     private NewsEntityFacade newsEntityFacade;
 
     private NewsEntity news;
-    private LoginController loginc;
+    private LoginController loginc = new LoginController();
     private LoginDao aUser;
 
     public LoginDao getaUser() {
@@ -84,7 +84,6 @@ public class NewsController implements Serializable {
     }
 
     public String add() {
-
 //        System.out.println("If I got user when add?" + aUser.getUsername());
         this.news.setUser(aUser);
         this.newsEntityFacade.create(this.news);

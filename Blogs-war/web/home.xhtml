@@ -54,6 +54,9 @@
         <br></br>
         <h:outputText value="#{newsController.getUserCount()}"></h:outputText>
         <h:outputText value=" Users are reading the News"></h:outputText>
+        <br></br>
+        <h:outputText value ="#{login.getUser().username}"></h:outputText><dd></dd>
+        <h:link value="Log out" outcome="login"></h:link>
     </h:body>
 </html>
 

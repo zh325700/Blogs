@@ -8,7 +8,13 @@
     <h:body>
         Here you confirm
         <h:form>
-            <h:commandButton value="Continue" action="createNews-return"/>
+            <h:outputText value="is This the blog you wanna post?"></h:outputText><br></br>
+            <h:outputLabel value="Title:"/>
+            <h:outputText value="#{createNewsController.title}"></h:outputText><br></br>
+            <h:outputLabel value="Content:"/>
+            <h:outputText value="#{createNewsController.content}"></h:outputText><br></br>
+            <h:outputText value="#{createNewsController.getLoginc().username}"></h:outputText><br></br>
+            <h:commandButton value="Continue" action="#{createNewsController.add()}"/>
         </h:form>
         
     </h:body>
