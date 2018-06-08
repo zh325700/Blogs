@@ -8,6 +8,7 @@ package controller;
 import ejb.LoggingInterceptor;
 import ejb.LoginDao;
 import ejb.NewsEntity;
+import ejb.NewsEntity.Categories;
 import ejb.SessionManagerBean;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
@@ -39,7 +40,44 @@ public class NewsController implements Serializable {
     private NewsEntity news;
     private LoginController loginc = new LoginController();
     private LoginDao aUser;
+    private Categories choosenCat;
+    
+    private Categories[] categories = Categories.values();
 
+    public SessionManagerBean getSessionManagerBean() {
+        return sessionManagerBean;
+    }
+
+    public void setSessionManagerBean(SessionManagerBean sessionManagerBean) {
+        this.sessionManagerBean = sessionManagerBean;
+    }
+
+    public NewsEntityFacade getNewsEntityFacade() {
+        return newsEntityFacade;
+    }
+
+    public void setNewsEntityFacade(NewsEntityFacade newsEntityFacade) {
+        this.newsEntityFacade = newsEntityFacade;
+    }
+
+    public Categories getChoosenCat() {
+        return choosenCat;
+    }
+
+    public void setChoosenCat(Categories choosenCat) {
+        this.choosenCat = choosenCat;
+    }
+
+    public Categories[] getCategories() {
+        return categories;
+    }
+
+    public void setCategories(Categories[] categories) {
+        this.categories = categories;
+    }
+
+    
+    
     public LoginDao getaUser() {
         return aUser;
     }
@@ -86,6 +124,7 @@ public class NewsController implements Serializable {
     public String add() {
 //        System.out.println("If I got user when add?" + aUser.getUsername());
         this.news.setUser(aUser);
+        this.news.setCategory(choosenCat);
         this.newsEntityFacade.create(this.news);
         return "home";
     }
