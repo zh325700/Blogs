@@ -16,6 +16,7 @@ is divided into following sections:
 
         -->
 <project xmlns:ejbjarproject1="http://www.netbeans.org/ns/j2ee-ejbjarproject/1" xmlns:ejbjarproject2="http://www.netbeans.org/ns/j2ee-ejbjarproject/2" xmlns:ejbjarproject3="http://www.netbeans.org/ns/j2ee-ejbjarproject/3" basedir=".." default="default" name="Blogs-ejb-impl">
+    <import file="jaxws-build.xml"/>
     <import file="ant-deploy.xml"/>
     <fail message="Please build using Ant 1.7.1 or higher.">
         <condition>
@@ -796,6 +797,7 @@ exists or setup the property manually. For example like this:
         <copyfiles files="${libs.jsf20.classpath}" todir="${build.classes.dir}"/>
         <copyfiles files="${libs.jpa2-persistence.classpath}" todir="${build.classes.dir}"/>
         <copyfiles files="${libs.eclipselink.classpath}" todir="${build.classes.dir}"/>
+        <copyfiles files="${file.reference.modules-ext}" todir="${build.classes.dir}"/>
         <copyfiles files="${libs.jaxb.classpath}" todir="${build.classes.dir}"/>
         <copyfiles files="${libs.JAVADB_DRIVER_LABEL.classpath}" todir="${build.classes.dir}"/>
         <copyfiles files="${libs.javaee-api-7.0.classpath}" todir="${build.classes.dir}"/>
@@ -804,23 +806,26 @@ exists or setup the property manually. For example like this:
         <basename file="${libs.jsf20.classpath}" property="manifest.libs.jsf20.classpath"/>
         <basename file="${libs.jpa2-persistence.classpath}" property="manifest.libs.jpa2-persistence.classpath"/>
         <basename file="${libs.eclipselink.classpath}" property="manifest.libs.eclipselink.classpath"/>
+        <basename file="${file.reference.modules-ext}" property="manifest.file.reference.modules-ext"/>
         <basename file="${libs.jaxb.classpath}" property="manifest.libs.jaxb.classpath"/>
         <basename file="${libs.JAVADB_DRIVER_LABEL.classpath}" property="manifest.libs.JAVADB_DRIVER_LABEL.classpath"/>
         <basename file="${libs.javaee-api-7.0.classpath}" property="manifest.libs.javaee-api-7.0.classpath"/>
         <manifest file="${build.ear.classes.dir}/META-INF/MANIFEST.MF" mode="update">
-            <attribute name="Extension-List" value="jar-1 jar-2 jar-3 jar-4 jar-5 jar-6 "/>
+            <attribute name="Extension-List" value="jar-1 jar-2 jar-3 jar-4 jar-5 jar-6 jar-7 "/>
             <attribute name="jar-1-Extension-Name" value="${manifest.libs.jsf20.classpath}"/>
             <attribute name="jar-2-Extension-Name" value="${manifest.libs.jpa2-persistence.classpath}"/>
             <attribute name="jar-3-Extension-Name" value="${manifest.libs.eclipselink.classpath}"/>
-            <attribute name="jar-4-Extension-Name" value="${manifest.libs.jaxb.classpath}"/>
-            <attribute name="jar-5-Extension-Name" value="${manifest.libs.JAVADB_DRIVER_LABEL.classpath}"/>
-            <attribute name="jar-6-Extension-Name" value="${manifest.libs.javaee-api-7.0.classpath}"/>
+            <attribute name="jar-4-Extension-Name" value="${manifest.file.reference.modules-ext}"/>
+            <attribute name="jar-5-Extension-Name" value="${manifest.libs.jaxb.classpath}"/>
+            <attribute name="jar-6-Extension-Name" value="${manifest.libs.JAVADB_DRIVER_LABEL.classpath}"/>
+            <attribute name="jar-7-Extension-Name" value="${manifest.libs.javaee-api-7.0.classpath}"/>
         </manifest>
     </target>
     <target depends="compile" name="library-inclusion-in-manifest">
         <copyfiles files="${libs.jsf20.classpath}" todir="${dist.ear.dir}/lib"/>
         <copyfiles files="${libs.jpa2-persistence.classpath}" todir="${dist.ear.dir}/lib"/>
         <copyfiles files="${libs.eclipselink.classpath}" todir="${dist.ear.dir}/lib"/>
+        <copyfiles files="${file.reference.modules-ext}" todir="${dist.ear.dir}/lib"/>
         <copyfiles files="${libs.jaxb.classpath}" todir="${dist.ear.dir}/lib"/>
         <copyfiles files="${libs.JAVADB_DRIVER_LABEL.classpath}" todir="${dist.ear.dir}/lib"/>
         <copyfiles files="${libs.javaee-api-7.0.classpath}" todir="${dist.ear.dir}/lib"/>

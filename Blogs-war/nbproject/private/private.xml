@@ -3,9 +3,25 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+<<<<<<< HEAD
             <file>file:/C:/Users/zhanghan/Desktop/javaee1/javaee/Blogs/Blogs-war/web/WEB-INF/web.xml</file>
             <file>file:/C:/Users/zhanghan/Desktop/javaee1/javaee/Blogs/Blogs-war/src/java/filter/LoginFilter.java</file>
             <file>file:/C:/Users/zhanghan/Desktop/javaee1/javaee/Blogs/Blogs-war/src/java/controller/LoginController.java</file>
+=======
+<<<<<<< HEAD
+            <file>file:/C:/Users/Yunying/Desktop/Blogs/Blogs-war/src/java/web/client/servelet/NewServlet.java</file>
+=======
+            <file>file:/C:/Users/zhanghan/Desktop/javaee1/javaee/Blogs/Blogs-war/src/java/controller/CreateNewsController.java</file>
+            <file>file:/C:/Users/zhanghan/Desktop/javaee1/javaee/Blogs/Blogs-war/web/createNews/createNews.xhtml</file>
+            <file>file:/C:/Users/zhanghan/Desktop/javaee1/javaee/Blogs/Blogs-war/web/addNews.xhtml</file>
+            <file>file:/C:/Users/zhanghan/Desktop/javaee1/javaee/Blogs/Blogs-war/web/listOnlyMyNews.xhtml</file>
+            <file>file:/C:/Users/zhanghan/Desktop/javaee1/javaee/Blogs/Blogs-war/web/createNews/createNews-flow.xml</file>
+            <file>file:/C:/Users/zhanghan/Desktop/javaee1/javaee/Blogs/Blogs-war/web/home.xhtml</file>
+            <file>file:/C:/Users/zhanghan/Desktop/javaee1/javaee/Blogs/Blogs-war/src/java/controller/NewsController.java</file>
+            <file>file:/C:/Users/zhanghan/Desktop/javaee1/javaee/Blogs/Blogs-war/web/createNews/createNewsContent.xhtml</file>
+            <file>file:/C:/Users/zhanghan/Desktop/javaee1/javaee/Blogs/Blogs-war/web/createNews/createNews-confirmation.xhtml</file>
+>>>>>>> 473b24671ed96825912dd1ca8343fc62ad23e23b
+>>>>>>> d1e11a48b9d5fdf93c09a3f01e965f31cdb03b8f
         </group>
     </open-files>
 </project-private>
