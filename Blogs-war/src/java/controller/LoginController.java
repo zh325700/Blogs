@@ -12,9 +12,6 @@ import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import static javax.swing.text.StyleConstants.Size;
 import org.primefaces.context.RequestContext;
 
 /**
@@ -23,22 +20,40 @@ import org.primefaces.context.RequestContext;
  */
 @ManagedBean(name = "login")
 @SessionScoped
-public class LoginController implements Serializable{
+public class LoginController implements Serializable {
 
     private String username;
     private String password;
     private LoginDao user;
     private DataQuery query = new DataQuery();
-    
-    public String loginControl(){
-        if(query.loginControl(username,password)){
+
+    public String loginControl() {
+        if (query.loginControl(username, password)) {
             user = query.getMyUser();
-            return "home.xhtml?faces-redirect=true";
+            return "secured/home.xhtml?faces-redirect=true";
         }
         RequestContext.getCurrentInstance().update("growl");
         FacesContext context = FacesContext.getCurrentInstance();
-        context.addMessage(null,new FacesMessage(FacesMessage.SEVERITY_ERROR,"Error","Ussername or Password invalid"));
+        context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error", "Ussername or Password invalid"));
         return "";
+    }
+
+    public String logout() {
+           FacesContext.getCurrentInstance().getExternalContext()
+        .invalidateSession();
+        return "/logout.xhtml?faces-redirect=true";
+    }
+
+    public boolean isLoggedIn() {
+        return user != null;
+    }
+
+    public String isLoggedInForwardHome() {
+        if (isLoggedIn()) {
+            return "secured/home.xhtml?faces-redirect=true";      
+        }
+
+        return null;
     }
 
     public String getUsername() {
@@ -61,9 +76,4 @@ public class LoginController implements Serializable{
         return user;
     }
 
-    public void setUser(LoginDao user) {
-        this.user = user;
-    }
-    
-    
 }

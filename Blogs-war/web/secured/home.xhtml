@@ -1,0 +1,81 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      
+    
+    <h:head>
+        <title>Home page</title>
+    </h:head>
+    <h:body>
+        <h:form id="home-form">
+            <p:panel header="Home">
+                <p>
+                    <h:outputText id="welcome-message"
+                                  value="Welcome, #{login.user.username}!" />
+                </p>
+
+                <p:commandButton value="Logout" action="#{login.logout()}" />
+            </p:panel>
+        </h:form>
+        <h:form>
+            <h:commandButton value = "Add News" action = "#{newsController.gotonews(login.getUser())}" /> 
+            <h:commandButton value = "List my News" action = "listOnlyMyNews" /> 
+<!--            <h:commandLink action="#{newsController.gotonews(login.getUser())}">
+                <h:outputText value="Add News"></h:outputText><br></br>
+            </h:commandLink>-->
+
+<!--            <h:commandLink action="listOnlyMyNews">
+                <h:outputText value="List my News"></h:outputText><br></br>
+            </h:commandLink>-->
+            <br></br>
+            <h:dataTable var="news" value="#{newsController.findAll()}" border="1" cellpadding="2" cellspacing="2">
+                <h:column>
+                    <f:facet name="header">Id</f:facet>
+                    <h:outputText value="#{news.id}"></h:outputText>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Title</f:facet>
+                    <h:outputText value="#{news.title}"></h:outputText>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Category</f:facet>
+                    <h:outputText value="#{news.category}"></h:outputText>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Body</f:facet>
+                    <h:outputText value="#{news.body}"></h:outputText>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Likes</f:facet>
+                    <h:outputText value="#{news.likes}"></h:outputText>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Option</f:facet>
+                    <h:commandLink value="Delete" action ="#{newsController.delete(news)}" onclick="return confirm('Are you sure?')">
+                    </h:commandLink>
+                </h:column>
+                <h:column>
+                    <h:commandLink value="Edit" action ="#{newsController.edit(news)}">
+                    </h:commandLink> 
+                </h:column>
+            </h:dataTable>
+        </h:form>   
+        <h:form>
+            <h:commandLink action="createNews">
+                <h:outputText value="Begin Creating Long News Using page flow"/>
+            </h:commandLink>
+            <br></br>
+        </h:form>
+        <br></br>
+        <a href='/ListNews'>List All News Using servlet</a> <br></br>
+        <a href='/PostMessage'>Add new short news Using messageDriven bean</a>
+        <br></br>
+        <h:outputText value="#{newsController.getUserCount()}"></h:outputText>
+        <h:outputText value=" Users are reading the News"></h:outputText>
+        <br></br>
+    </h:body>
+</html>
+
