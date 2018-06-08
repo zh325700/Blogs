@@ -2,12 +2,16 @@
 <project xmlns="http://www.netbeans.org/ns/project/1">
     <type>org.netbeans.modules.j2ee.ejbjarproject</type>
     <configuration>
+        <buildExtensions xmlns="http://www.netbeans.org/ns/ant-build-extender/1">
+            <extension file="jaxws-build.xml" id="jaxws"/>
+        </buildExtensions>
         <data xmlns="http://www.netbeans.org/ns/j2ee-ejbjarproject/3">
             <name>Blogs-ejb</name>
             <minimum-ant-version>1.6.5</minimum-ant-version>
             <included-library dirs="200">libs.jsf20.classpath</included-library>
             <included-library dirs="200">libs.jpa2-persistence.classpath</included-library>
             <included-library dirs="200">libs.eclipselink.classpath</included-library>
+            <included-library dirs="200">file.reference.modules-ext</included-library>
             <included-library dirs="200">libs.jaxb.classpath</included-library>
             <included-library dirs="200">libs.JAVADB_DRIVER_LABEL.classpath</included-library>
             <included-library dirs="200">libs.javaee-api-7.0.classpath</included-library>
