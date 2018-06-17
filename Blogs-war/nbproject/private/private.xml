@@ -2,6 +2,13 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+<<<<<<< HEAD
         <group/>
+=======
+        <group>
+            <file>file:/C:/Users/zhanghan/Desktop/javaee1/javaee/Blogs/Blogs-war/web/secured/home.xhtml</file>
+            <file>file:/C:/Users/zhanghan/Desktop/javaee1/javaee/Blogs/Blogs-war/src/java/web/ListNews.java</file>
+        </group>
+>>>>>>> 0247eebfc27783e55229bf3d66b729d83410fbba
     </open-files>
 </project-private>

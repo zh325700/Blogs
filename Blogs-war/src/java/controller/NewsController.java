@@ -147,5 +147,9 @@ public class NewsController implements Serializable {
         this.aUser = aUser;
         return "addNews";
     }
+    
+    public String gotoListOnlyMyNews(){
+            return "listOnlyMyNews";
+    }
 
 }

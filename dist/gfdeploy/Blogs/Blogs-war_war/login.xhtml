@@ -6,13 +6,16 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
         <title>Facelet Title</title>
+        <f:metadata>
+            <f:viewAction action="#{login.isLoggedInForwardHome()}" />
+        </f:metadata>
     </h:head>
     <h:body>
         <p:growl id ="growl" sticky="true" showDetail="true"/>
         <h3>Login Form</h3>
         <h:form>
             <p:panelGrid columns = "3" columnClasses="rightalign,leftalign,leftalign">
-   
+
 
                 <h:outputLabel value="Username:" for="username"/>
                 <h:inputText id="username" label="Username"
@@ -21,11 +24,11 @@
                     <f:validator validatorId="emailValidator"/>
                 </h:inputText>
                 <h:message for="email" />
-                
+
                 <h:outputLabel value="Password:" for="password"/>
                 <p:password id="password" label="password"
-                             required="true"
-                             value="#{login.password}" />
+                            required="true"
+                            value="#{login.password}" />
                 <h:message for="password" />
                 <h:panelGroup/>
                 <h:commandButton id="login" value="login"

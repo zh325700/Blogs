@@ -1,19 +1,35 @@
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:h="http://java.sun.com/jsf/html"
       xmlns:p="http://primefaces.org/ui"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
+      
+    
     <h:head>
         <title>Home page</title>
     </h:head>
     <h:body>
-        <h:form>
-            <h:commandLink action="#{newsController.gotonews(login.getUser())}">
-                <h:outputText value="Add News"></h:outputText><br></br>
-            </h:commandLink>
+        <h:form id="home-form">
+            <p:panel header="Home">
+                <p>
+                    <h:outputText id="welcome-message"
+                                  value="Welcome, #{login.user.username}!" />
+                </p>
 
-            <h:link value="List my News" outcome="listOnlyMyNews"></h:link>
+                <p:commandButton value="Logout" action="#{login.logout()}" />
+            </p:panel>
+        </h:form>
+        <h:form>
+            <h:commandButton value = "Add News" action = "#{newsController.gotonews(login.getUser())}" /> 
+            <h:commandButton value = "List my News" action = "listOnlyMyNews" /> 
+<!--            <h:commandLink action="#{newsController.gotonews(login.getUser())}">
+                <h:outputText value="Add News"></h:outputText><br></br>
+            </h:commandLink>-->
+
+<!--            <h:commandLink action="listOnlyMyNews">
+                <h:outputText value="List my News"></h:outputText><br></br>
+            </h:commandLink>-->
             <br></br>
             <h:dataTable var="news" value="#{newsController.findAll()}" border="1" cellpadding="2" cellspacing="2">
                 <h:column>
@@ -51,16 +67,18 @@
             <h:commandLink action="createNews">
                 <h:outputText value="Begin Creating Long News Using page flow"/>
             </h:commandLink>
+            <br></br>
         </h:form>
         <br></br>
-        <a href='ListNews'>List All News Using servlet</a> <br></br>
-        <a href='PostMessage'>Add new short news Using messageDriven bean</a>
+        <h:form >
+            <a href='../ListNews'>List All News Using servlet</a> <br></br>
+            <a href='../PostMessage'>Add new short news Using messageDriven bean</a>
+        </h:form>
+        
         <br></br>
         <h:outputText value="#{newsController.getUserCount()}"></h:outputText>
         <h:outputText value=" Users are reading the News"></h:outputText>
         <br></br>
-        <h:outputText value ="#{login.getUser().username}"></h:outputText><dd></dd>
-        <h:link value="Log out" outcome="login"></h:link>
     </h:body>
 </html>
 

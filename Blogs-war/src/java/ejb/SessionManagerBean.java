@@ -20,7 +20,7 @@ import javax.servlet.http.HttpSessionListener;
 @WebListener
 public class SessionManagerBean implements HttpSessionListener {
 
-    private static int counter = 1;
+    private static int counter = 0;
 
     public void sessionCreated(HttpSessionEvent se) {
         counter++;

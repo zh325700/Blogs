@@ -63,7 +63,7 @@ public class PostMessage extends HttpServlet {
                 messageProducer.send(message);
                 messageProducer.close();
                 connection.close();
-                response.sendRedirect("home.xhtml");
+                response.sendRedirect("secured/home.xhtml");
 
             } catch (JMSException ex) {
                 ex.printStackTrace();
