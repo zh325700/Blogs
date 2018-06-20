@@ -49,7 +49,7 @@ public class LoginDao implements Serializable {
     @Basic(optional = false)
     @Column(name = "PASSWORD")
     private String password;
-    @OneToMany(mappedBy = "user")
+    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
     private Collection<NewsEntity> newsCollection;
 //    @JoinTable(name = "USER_NEWS", joinColumns = {
 //        @JoinColumn(name = "ID",

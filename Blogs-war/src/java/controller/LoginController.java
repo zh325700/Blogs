@@ -16,6 +16,7 @@ import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
+import javax.servlet.http.HttpSession;
 import org.primefaces.context.RequestContext;
 
 
@@ -40,6 +41,8 @@ public class LoginController implements Serializable {
         System.out.println(username+" "+password);
         user = userEJB.ifhasUser(username, password);
         if(user != null){
+            HttpSession session = (HttpSession)FacesContext.getCurrentInstance().getExternalContext().getSession(false);
+            session.setAttribute("loggedUser", user);
             return "secured/home.xhtml?faces-redirect=true";
         }
         RequestContext.getCurrentInstance().update("growl");

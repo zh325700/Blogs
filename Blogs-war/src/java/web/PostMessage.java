@@ -4,10 +4,12 @@
  */
 package web;
 
+import ejb.LoginDao;
 import ejb.NewsEntity;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.annotation.Resource;
+import javax.faces.context.FacesContext;
 import javax.jms.Connection;
 import javax.jms.ConnectionFactory;
 import javax.jms.JMSException;
@@ -20,6 +22,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -58,6 +61,8 @@ public class PostMessage extends HttpServlet {
                 NewsEntity e = new NewsEntity();
                 e.setTitle(title);
                 e.setBody(body);
+                HttpSession sessionofUser = request.getSession(true);
+                e.setUser((LoginDao) sessionofUser.getAttribute("loggedUser"));
 
                 message.setObject(e);
                 messageProducer.send(message);
