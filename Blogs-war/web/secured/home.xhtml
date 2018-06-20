@@ -4,8 +4,8 @@
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:p="http://primefaces.org/ui"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
-      
-    
+
+
     <h:head>
         <title>Home page</title>
     </h:head>
@@ -23,18 +23,16 @@
         <h:form>
             <h:commandButton value = "Add News" action = "#{newsController.gotonews(login.getUser())}" /> 
             <h:commandButton value = "List my News" action = "listOnlyMyNews" /> 
-<!--            <h:commandLink action="#{newsController.gotonews(login.getUser())}">
-                <h:outputText value="Add News"></h:outputText><br></br>
-            </h:commandLink>-->
 
-<!--            <h:commandLink action="listOnlyMyNews">
-                <h:outputText value="List my News"></h:outputText><br></br>
-            </h:commandLink>-->
             <br></br>
             <h:dataTable var="news" value="#{newsController.findAll()}" border="1" cellpadding="2" cellspacing="2">
                 <h:column>
                     <f:facet name="header">Id</f:facet>
                     <h:outputText value="#{news.id}"></h:outputText>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Owner</f:facet>
+                    <h:outputText value="#{news.user.username}"></h:outputText>
                 </h:column>
                 <h:column>
                     <f:facet name="header">Title</f:facet>
@@ -74,7 +72,7 @@
             <a href='../ListNews'>List All News Using servlet</a> <br></br>
             <a href='../PostMessage'>Add new short news Using messageDriven bean</a>
         </h:form>
-        
+
         <br></br>
         <h:outputText value="#{newsController.getUserCount()}"></h:outputText>
         <h:outputText value=" Users are reading the News"></h:outputText>
