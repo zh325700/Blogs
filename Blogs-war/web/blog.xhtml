@@ -1,0 +1,29 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Message Restful</title>
+    </h:head>
+    <h:body>
+        <h1>Hello from Facelets</h1>
+        <h:dataTable value="#{blogController.blogs}"
+                     var ="blog"
+                     summary ="table showing all blogs">
+            <h:column>
+                <f:facet name="header">
+                    <h:outputText value="ID"/>
+                </f:facet>
+                <h:outputText value="#{blog.id}"></h:outputText>
+            </h:column>
+            <h:column>
+                <f:facet name="header">
+                    <h:outputText value="c"/>
+                </f:facet>
+                <h:outputText value="#{blog.message}"></h:outputText>
+            </h:column>
+        </h:dataTable>
+    </h:body>
+</html>
+

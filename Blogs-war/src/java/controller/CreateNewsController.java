@@ -27,7 +27,6 @@ public class CreateNewsController implements Serializable {
 
     @EJB
     private NewsEntityFacade newsEntityFacade;
-
     private String title;
     private String content;
     private NewsEntity aNews = new NewsEntity();
@@ -41,6 +40,7 @@ public class CreateNewsController implements Serializable {
 
     public NewsEntity.Categories getChoosenCat() {
         return choosenCat;
+       
     }
 
     public void setChoosenCat(NewsEntity.Categories choosenCat) {

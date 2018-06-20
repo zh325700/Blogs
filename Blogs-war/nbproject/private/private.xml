@@ -2,12 +2,24 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-<<<<<<< HEAD
-        <group/>
-=======
         <group>
             <file>file:/C:/Users/zhanghan/Desktop/javaee1/javaee/Blogs/Blogs-war/web/secured/home.xhtml</file>
+            <file>file:/C:/Users/zhanghan/Desktop/javaee1/javaee/Blogs/Blogs-war/src/java/controller/BlogController.java</file>
+            <file>file:/C:/Users/zhanghan/Desktop/javaee1/javaee/Blogs/Blogs-war/src/java/rest/Blog.java</file>
+            <file>file:/C:/Users/zhanghan/Desktop/javaee1/javaee/Blogs/Blogs-war/web/createNews-return.xhtml</file>
+            <file>file:/C:/Users/zhanghan/Desktop/javaee1/javaee/Blogs/Blogs-war/src/java/rest/service/AbstractFacade.java</file>
+            <file>file:/C:/Users/zhanghan/Desktop/javaee1/javaee/Blogs/Blogs-war/web/index.html</file>
+            <file>file:/C:/Users/zhanghan/Desktop/javaee1/javaee/Blogs/Blogs-war/src/java/rest/service/ApplicationConfig.java</file>
+            <file>file:/C:/Users/zhanghan/Desktop/javaee1/javaee/Blogs/Blogs-war/src/java/controller/LoginController.java</file>
+            <file>file:/C:/Users/zhanghan/Desktop/javaee1/javaee/Blogs/Blogs-war/src/java/controller/NewsController.java</file>
+            <file>file:/C:/Users/zhanghan/Desktop/javaee1/javaee/Blogs/Blogs-war/src/java/controller/DraftController.java</file>
+            <file>file:/C:/Users/zhanghan/Desktop/javaee1/javaee/Blogs/Blogs-war/src/java/controller/CreateNewsController.java</file>
+            <file>file:/C:/Users/zhanghan/Desktop/javaee1/javaee/Blogs/Blogs-war/src/java/rest/service/BlogFacadeREST.java</file>
+            <file>file:/C:/Users/zhanghan/Desktop/javaee1/javaee/Blogs/Blogs-war/web/login.xhtml</file>
+            <file>file:/C:/Users/zhanghan/Desktop/javaee1/javaee/Blogs/Blogs-war/src/java/controller/EmailValidator.java</file>
+            <file>file:/C:/Users/zhanghan/Desktop/javaee1/javaee/Blogs/Blogs-war/web/secured/createDraft.xhtml</file>
+            <file>file:/C:/Users/zhanghan/Desktop/javaee1/javaee/Blogs/Blogs-war/src/java/controller/BlogClient.java</file>
+            <file>file:/C:/Users/zhanghan/Desktop/javaee1/javaee/Blogs/Blogs-war/web/blog.xhtml</file>
         </group>
->>>>>>> 0247eebfc27783e55229bf3d66b729d83410fbba
     </open-files>
 </project-private>
