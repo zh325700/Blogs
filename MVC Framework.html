@@ -1,0 +1,227 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<!-- saved from url=(0108)https://cygnus.cc.kuleuven.be/bbcswebdav/pid-14352243-dt-content-rid-29260566_3/orgs/C130069-B-1415/MVC.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<title>MVC Framework</title>
+
+</head>
+<body>
+<div id="header">
+Distributed Applications<br>
+KU Leuven - Campus Groep T<br>
+2017-2018<br>
+</div>
+<div id="groupmembers">
+<ul>
+<li>Han Zhang</li>
+<li>Yunying Ma</li>
+
+</ul>
+</div>
+<h1>&lt;JSF&gt;</h1>
+<h2>Short description</h2>
+<p>JavaServer Faces (JSF, or simply Faces) was created to ease the creation of graphical interfaces.
+Inspired by the Swing component model and other GUI (graphical user interface) frameworks, JSF allows
+developers to think in terms of components, events, backing beans, and their interactions, instead of requests, responses,
+and markup language. Its goal is to make web development faster and easier by supporting user interface components
+(such as text boxes, list boxes, tabbed panes, and data grids) in a rapid application development (RAD) approach.<br></br>
+JavaServer Faces (JSF) is a new standard Java framework for building Web applications. It simplifies development by providing 
+a component-centric approach to developing Java Web user interfaces. JavaServer Faces also appeals to a diverse audience of Java/Web developers.
+ "Corporate developers" and Web designers will find that JSF development can be as simple as dragging and dropping user interface (UI) components
+ onto a page, while "systems developers" will find that the rich and robust JSF API offers them unsurpassed power and programming flexibility. 
+ JSF also ensures that applications are well designed with greater maintainability by integrating the well established Model-View-Controller (MVC)
+ design pattern into it's architecture. Finally, since JSF is a Java standard developed through Java Community Process (JCP), development tools vendors
+ are fully empowered to provide easy to use, visual, and productive develop environments for JavaServer Faces.
+</p>
+<h2>Technical features</h2>
+<h3>MVC solution</h3>
+<p>
+Specifically, in JSF the mapping is as follows:<br></br>
+Model - The Services/DAOs plus the entities they produce and consume. The entry point to this is the managed bean, 
+but in Java EE (of which JSF is a part) these artifacts are typically implemented by EJB and JPA respectively.
+<br></br>
+View - The UI components and their composition into a full page. This is fully in the domain of JSF and implemented by JSF UIComponents and Facelets respectively.
+<br></br>
+Controller - The traffic cop that handles commands and incoming data from the user, routes this to the right parts and selects a view for display. 
+In JSF one doesn't write this controller, but it's already provided by the framework (it's the FacesServlet).
+<br></br>
+<img src="jsf_architectute.jpg" alt="mvc_pic">
+<p>from: https://www.tutorialspoint.com/jsf/jsf_architecture.htm</p>
+</p>
+<h3>Navigation</h3>
+<p>
+In JSF you can easily navigate to a page if you know its name. You just need to explicitly set the page’s name
+either in a backing bean returned parameter method or in a JSF page. The FacesServlet, acting as a controller,
+will do the rest: intercept the call, get the page by its name, bind the values to the components, and render the
+page to the user. With explicit navigation you can choose between navigating straight to a page and doing some
+processing before navigating.<br>
+For example:<br>
+When you just want to go from page to page by clicking a link or a button without doing any processing, you can
+use the UI components &lt;h:button&gt;, &lt;h:link&gt; and &lt;h:outputLink&gt;.<br>
+&lt;h:link value="Back to creating a new book" outcome="newBook.xhtml"/&gt;<br>
+But sometimes this is not enough because you need to access a business tier or a database to retrieve or process
+data. In this case, you would use &lt;h:commandButton&gt and &lt;h:commandLink&gt with their action attribute that allows you
+to target backing bean methods, as opposed to targeting a page with &lt;h:link&gt or &lt;h:button&gt.<br>
+&lt;h:commandButton value="Create a book" action="#{bookController.doCreateBook}"&gt;
+</p>
+<h3>Form handling</h3>
+<p>
+JSF Form component is a collection of fields along with the data and submit functionality to be sent to the model implementing the business scenario.
+<br>To use the form in your JSF page include the following namespace;
+<br>
+xmlns:h="http://java.sun.com/jsf/html"
+<br>
+Some of the important form tag attributes are:<br>
+<img style="height: 60vh; width: 100vh;" src="jsf_form.png" alt="jsf_form">
+</p>
+<h3>Type conversion and Validation</h3>
+<p>
+JSF provides a standard conversion and validation mechanism
+that can process user inputs to ensure data integrity. In this way, when you invoke business methods to process, you
+can safely rely on valid data. Conversion and validation allow the developer to focus on business logic rather than
+checking whether the input data are not null, fit a range of values, and so on.
+<br>
+Conversion takes place when data input by the end user has to be converted from a String to an object and vice
+versa. It ensures that data are of the right type—for example, in converting a String to a java.util.Date, a String to
+an Integer, or a price in dollars to euros. As for validation, it ensures data contain the expected content
+(a date following the dd/MM/yyyy format, a float between 3.14 and 3.15, etc.).
+Conversion and validation occur during different phases of the page life cycle (which you saw in the previous
+chapter) as shown in Figure<br>
+In page lifecycle: <br> 
+<img style="height: 60vh; width: 120vh;" src="validation_in_lifcycle.png"><br>
+During the Apply request values phase in the Figure, the UI component value is converted to the targeted object
+(e.g., from a String to a date) and then validated during the Process validation phase. It makes sense that conversion
+and validation occur before component data are bound to the backing bean (which happens during the Update model
+values phase). If any error is found, it will result in adding error messages and shortening the life cycle, so it goes
+straight to Render response (and messages will be displayed on the user interface with &lth:messages/&gt). During this
+phase, the backing bean properties are converted back to a String to be displayed.
+JSF has a set of standard converters and validators and allows you to easily create your own.
+</p>
+<h3>Server-side handling of
+user interface events</h3>
+<p>
+When a user clicks a JSF button or link or changes any value in the text field, JSF UI component fires an event, 
+which will be handled by the application code. To handle such an event, an event handler is to be registered in the application code or managed bean.
+
+When a UI component checks that a user event has occured, it creates an instance of the corresponding event class and 
+adds it to an event list. Then, Component fires the event, i.e., checks the list of listeners for that event and calls the event 
+notification method on each listener or handler.
+
+JSF also provide system level event handlers, which can be used to perform some tasks when the application starts or is stopping.
+
+Following are some important Event Handler in JSF 2.0:<br>
+<img style="height: 40vh; width: 80vh;" src="even_handling.png">
+</p>
+<h3>Rendering</h3>
+<p>
+Rendering is used for Conditionally displaying JSF components:
+<p> &lt;h:form rendered="#{some boolean condition}"&gt; </p>
+
+A renderer is responsible for displaying a component and translating user input into the component’s value.
+Think of it as a translator between the client and the server: it decodes the user request to set values to the component,
+and encodes the response to create a representation of a component that the client understands and can display.
+Renderers are organized into render kits, which focus on a specific type of output. To ensure application
+portability, JSF includes support for a standard render kit and associated renderers for HTML 4.01. JSF
+implementations can then create their own render kit to generate Wireless Markup Language (WML), scalable vector
+graphics (SVGs), and so on.
+</p>
+<h3>I18N and L10N</h3>
+<p>
+Internationalization and Localization are important features for a web based application. Often the term i18n and L10n is encountered in the context of 
+internationalization and localization. . The abbreviation is based on the fact that the rather lengthy word 'internationalization' 
+starts with an 'i' followed by 18 characters followed by an 'n'. L10n follow the same logic as i18n. An application that has been internationalized can be 
+localized for different regions without changing any code.
+
+The overall effect of implementing localization, is that our application will conform dynamically to the language, number and time formats defined by 
+a particular locale.<br>
+Creating an internationalized application comes in two steps:<br>
+Internationalization: Implementing the features in your application to support multiple languages<br>
+Localization: Presenting text, graphic, date, currency etc specific to a region 
+</p>
+<h3>JavaScript integration</h3>
+<p>
+JavaScript is a powerful way to create
+dynamic web applications by writing functions that interact with the DOM of a page. W3C standardized DOM,
+whereas the European Computer Manufacturers Association (ECMA) standardized JavaScript as the ECMAScript
+specification. Any page written with these standards (XHTML, CSS, and JavaScript) should look and behave more or
+less identically in any browser that adheres to these guidelines.<br>
+JavaScript function can be embedded in the page within a &lt;script&gt; tag (but could
+also be externalized in a separate file)<br>
+The h:outputScript tag renders an HTML element of the type "script" with type "text/javascript". 
+This tag is used to add an external javascript file to JSF page.<br>
+for example:<br>
+&lt;h:outputScript library = "js" name = "help.js" /&gt; <br>
+Previous versions of JSF offered no native Ajax solution, so third-party libraries had to be used to fill the gap.
+Sometimes this increased the complexity of the code at the expense of performance. Since JSF 2.0, things are much
+easier, as Ajax support has been specified and is built into any JSF implementation.<br>
+First of all, there is a specified JavaScript library (jsf.js) for performing Ajax interaction, which means you
+don’t have to develop your own scripts or manipulate the XMLHttpRequest objects directly. Without developing any
+JavaScript, you can use a set of standardized functions to send asynchronous requests and receive data. In order to
+use this library in your pages, you need to add the jsf.js resource with the following line of code:<br>
+&lt;h:outputScript name="jsf.js" library="javax.faces" target="head"/&gt;
+</p>
+<h3> ...</h3>
+<h2>Documentation</h2>
+<h3>Kind of documentation, quality, up-todate</h3>
+<p>...</p>
+<h3>Community activity</h3>
+<p>
+In the Figure below, we can see Spring’s dominance over the past four years increase as they monopolize the web framework market.
+ Pivotal can be very happy with their Spring Boot adoption rate and this sets them up nicely as the microservices market begins to grow.
+ JSF is slowly decreasing, although this might just be a result of reduced Java EE adoption overall. Struts, GWT, Play 1, Wicket,
+ Stripes and Tapestry struggle to stay popular, while Vaadin is one of the few frameworks that has shown resilience during the Spring domination.<br>
+<img src="community_activity.png">
+<br><h3>JSF communities:</h3>
+<a href="http://jsfcentral.com/">jsfCentral</a><br>
+<a href="http://www.javaserverfaces.org/">JavaServer Faces.org</a><br>
+<a href="https://www.ctolib.com/article/compares/927">JSF tool kit</a><br>
+</p>
+<h2>Future evolution</h2>
+<p>
+I found some discussion about the future of JSF in the internet:<br>
+<p style="color:red">Update March 6, 2018:</p>
+"Since I wrote the article, many things have changed. At the time, the future of JavaEE looked uncertain, to put it mildly.
+ I didn't express my thought verbatim in this article, but I had reason to believe the days of JavaEE as we knew it were counted.
+
+Luckily, the community raised their voices loud enough to impress Oracle. Much of this is the result of what Reza Rahman and
+ the Java EE Guardian did. Reza even quit his job as a Java evangelist at Oracle to stand up for his dreams. I'm deeply impressed by this move,
+ and I'm glad his gamble paid out.
+
+Be that as it may, in September 2017, JavaEE 7 was released, including JSF 2.3. In March 2018, there are still few application servers supporting JSF 2.3,
+ but I'm positive that's going to change soon. It's possible to use JSF 2.3 with a simple Tomcat (adding CDI). You can use Wildfly.
+ The next version of TomEE and IBM Websphere Liberty Profile are going to support JSF 2.3, and if I'm not mistaken, they're going to be published soon."
+<p style="color:red">JSF as a community project (2018 edition)</p>
+
+"The 2016 turmoil had several consequences. First, everybody working at Oracle temporarily left the JSF train.
+ Some of these people have returned, some of them haven't. In the meantime, work on JSF 2.3 continued. But it has become a community project.
+ Among others, the OmniFaces guys - Bauke Scholz (aka BalusC) and Arjan Timms - stepped in to fill the vacuum. Currently,
+ I'd say there are enough active key players to ensure the future of JSF.
+
+As for JavaEE itself - well, that's history. Oracle has abandoned it, but they didn't simply drop it. Instead,
+ they handed it over to the Eclipse foundation. So now we've got the successor of JavaEE 8 in its incubator phase. For legal reasons, it's also got a new name."
+ <br> from <a href="https://www.beyondjava.net/java-uis-state-of-javaserver-faces-jsf-in-2016">Beyond Java</a>
+</p>
+<h2>Your perception</h2>
+<p>...</p>
+<h3>Ease of use</h3>
+<p>...</p>
+<h3>Ease of installation</h3>
+<p>
+The NetBeans IDE has provided long-standing support for JavaServer Faces. Starting with the release of JSF 2.0 and Java EE 6, 
+NetBeans IDE has provided support for JSF 2.0 and JSF 2.1. 
+<br>Just select from the Framworks->library->JSF 2.2 and the JSF framework is ready to be used<br>
+<img style="height: 40vh; width: 80vh;" src="install_jsf.png">
+</p>
+</h3><h3>Learning curve</h3>
+<p>...</p>
+<h2>Practical information</h2>
+<h3>Website</h3>
+<p>
+<a href="https://www.tutorialspoint.com/jsf/index.htm">JSF Intro from Tutoriapoint</a><br>
+<a href="http://jsflessons.blogspot.com/p/internationalization.html">I18n and L10N Explaination in jsf</a>
+</p>
+<h3>Download</h3>
+<p>
+<a href="https://www.apress.com/gp/book/9781430246268">Beginning Java EE 7</a>
+</p>
+</body></html>

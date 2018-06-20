@@ -15,12 +15,9 @@ import java.io.Serializable;
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 import javax.ejb.EJB;
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.SessionScoped;
 import javax.faces.flow.FlowScoped;
 import javax.inject.Named;
 import model.NewsEntityFacade;
-import query.DataQuery;
 
 //@ManagedBean
 @Named
@@ -36,19 +33,11 @@ public class CreateNewsController implements Serializable {
     private NewsEntity aNews = new NewsEntity();
     private LoginController loginc = new LoginController();
     private LoginDao aUser;
-    private DataQuery query = new DataQuery();
 
     private NewsEntity.Categories choosenCat;
 
     private NewsEntity.Categories[] categories = NewsEntity.Categories.values();
 
-    public DataQuery getQuery() {
-        return query;
-    }
-
-    public void setQuery(DataQuery query) {
-        this.query = query;
-    }
 
     public NewsEntity.Categories getChoosenCat() {
         return choosenCat;

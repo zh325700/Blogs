@@ -26,7 +26,6 @@ import model.NewsEntityFacade;
  *
  * @author zhanghan
  */
-@ManagedBean
 @Named(value = "newsController")
 @SessionScoped
 public class NewsController implements Serializable {

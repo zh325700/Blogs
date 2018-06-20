@@ -5,14 +5,19 @@
  */
 package controller;
 
-import query.DataQuery;
+//import query.DataQuery;
 import ejb.LoginDao;
+import ejb.UserEJB;
 import java.io.Serializable;
+import javax.ejb.EJB;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
+import javax.inject.Inject;
+import javax.inject.Named;
 import org.primefaces.context.RequestContext;
+
 
 /**
  *
@@ -22,14 +27,19 @@ import org.primefaces.context.RequestContext;
 @SessionScoped
 public class LoginController implements Serializable {
 
+    @Inject
+    private UserEJB userEJB;
+
     private String username;
     private String password;
     private LoginDao user;
-    private DataQuery query = new DataQuery();
-
+    
     public String loginControl() {
-        if (query.loginControl(username, password)) {
-            user = query.getMyUser();
+
+        System.out.println("Login Control");
+        System.out.println(username+" "+password);
+        user = userEJB.ifhasUser(username, password);
+        if(user != null){
             return "secured/home.xhtml?faces-redirect=true";
         }
         RequestContext.getCurrentInstance().update("growl");
