@@ -22,7 +22,11 @@
         </h:form>
         <h:form>
             <h:commandButton value = "Add News" action = "#{newsController.gotonews(login.getUser())}" /> 
-            <h:commandButton value = "List my News" action = "listOnlyMyNews" /> 
+            <h:commandButton value = "List my News" action = "listOnlyMyNews.xhtml?faces-redirect=true" /> 
+        </h:form>
+
+        <h:form>
+
 
             <br></br>
             <h:dataTable var="news" value="#{newsController.findAll()}" border="1" cellpadding="2" cellspacing="2">

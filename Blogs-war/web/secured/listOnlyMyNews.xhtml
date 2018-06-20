@@ -9,7 +9,8 @@
     </h:head>
     <h:body>
         <h:form>
-            <h:dataTable var="news" value="#{newsController.getaUser().getNewsCollection()}" border="1" cellpadding="2" cellspacing="2">
+            <!--<h:dataTable var="news" value="#{loggedUser.getNewsCollection()}" border="1" cellpadding="2" cellspacing="2">-->
+            <h:dataTable var="news" value="#{newsController.newsEntityFacade.findNewsByUser(loggedUser)}" border="1" cellpadding="2" cellspacing="2">
                 <h:column>
                     <f:facet name="header">Id</f:facet>
                     <h:outputText value="#{news.id}"></h:outputText>

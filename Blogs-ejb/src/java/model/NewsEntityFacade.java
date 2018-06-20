@@ -6,7 +6,9 @@
 package model;
 
 
+import ejb.LoginDao;
 import ejb.NewsEntity;
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -28,6 +30,12 @@ public class NewsEntityFacade extends AbstractFacade<NewsEntity> {
 
     public NewsEntityFacade() {
         super(NewsEntity.class);
+    }
+    
+    public List<NewsEntity> findNewsByUser(LoginDao user){
+        List<NewsEntity> newsOfCertainUser = null;
+        newsOfCertainUser = em.createNamedQuery("NewsEntity.findByUser", NewsEntity.class).setParameter("user", user).getResultList();
+        return newsOfCertainUser;
     }
     
 }
