@@ -18,6 +18,8 @@ import javax.ejb.EJB;
 import javax.faces.flow.FlowScoped;
 import javax.inject.Named;
 import model.NewsEntityFacade;
+import javax.servlet.http.HttpSession;
+import javax.faces.context.FacesContext;
 
 //@ManagedBean
 @Named
@@ -37,10 +39,9 @@ public class CreateNewsController implements Serializable {
 
     private NewsEntity.Categories[] categories = NewsEntity.Categories.values();
 
-
     public NewsEntity.Categories getChoosenCat() {
         return choosenCat;
-       
+
     }
 
     public void setChoosenCat(NewsEntity.Categories choosenCat) {
@@ -76,6 +77,9 @@ public class CreateNewsController implements Serializable {
         aNews.setBody(content);
         aNews.setTitle(title);
         aNews.setCategory(choosenCat);
+        HttpSession session = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(false);
+        LoginDao l = (LoginDao) session.getAttribute("loggedUser");
+        aNews.setUser(l);
         this.newsEntityFacade.create(this.aNews);
         return "createNews-return";
     }
